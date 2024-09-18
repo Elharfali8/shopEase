@@ -58,15 +58,35 @@ body {
   background: var(--card-background);
 }
 
-.button {
+.primary-btn {
   background: var(--primary-color);
   color: var(--background-color);
   transition: all ease-in-out 150ms;
+  padding-right: 16px;
+  padding-left: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 7px;
 }
 
-.button:hover {
+.secondary-btn {
+  background: var(--success-color);
+  color: var(--background-color);
+  transition: all ease-in-out 150ms;
+  padding-right: 16px;
+  padding-left: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 7px;
+}
+
+.primary-btn:hover {
   background: var(--button-hover-color);
 }
+.secondary-btn:hover {
+  background: #378139;
+}
+
 
 .navbar {
   background: var(--nav-background);
@@ -102,4 +122,17 @@ body {
     padding-left: 0.25rem;  
     padding-right: 0.25rem; 
   }
+}
+
+.hero {
+  background: linear-gradient(135deg, #F4F7F9, #B0BEC5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--text-color);
+}
+
+.text {
+  color: var(--muted-text-color);
 }
