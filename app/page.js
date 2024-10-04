@@ -1,4 +1,4 @@
-import { Featured, Hero } from "@/components";
+import { Categories, Featured, Hero, Testimonials } from "@/components";
 
 
 export default function HomePage() {
@@ -6,6 +6,8 @@ export default function HomePage() {
     <main className="mt-20">
       <Hero />
       <Featured />
+      <Categories />
+      {/* <Testimonials /> */}
     </main>
   );
 }

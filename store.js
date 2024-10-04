@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import featuredReducer from "./features/featured/featuredSlice";
+import categoriesReducer from "./features/categories/categoriesSlice";
 
 const store = configureStore({
     reducer: {
-        featured: featuredReducer
+        featured: featuredReducer,
+        categories: categoriesReducer
     }
 })
 
