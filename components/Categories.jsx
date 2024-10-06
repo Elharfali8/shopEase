@@ -36,10 +36,10 @@ const Categories = () => {
           <SectionTitle text='Shop by Category' />
           <div className='container main-container grid place-items-center'>
               <div className='grid grid-cols-2 md:grid-cols-4 gap-6'>
-              {data?.map((icon) => {
+              {data?.map((icon, index) => {
                   
                   return (
-                      <Link href='/products' className='grid place-items-center p-4 bg-[#F4F7F9] rounded-lg transition-all ease-in-out duration-150 hover:scale-105 hover:shadow-md hover:shadow-[#E0E0E0] text-[#757575] hover:text-[#333333]'>
+                      <Link key={index} href='/products' className='grid place-items-center p-4 bg-[#F4F7F9] rounded-lg transition-all ease-in-out duration-150 hover:scale-105 shadow-md hover:shadow-[#E0E0E0] text-[#757575] hover:text-[#333333]'>
                           <span>{catIcon(icon)}</span>
                           <h2 className='mt-2 capitalize tracking-wide poppins-medium text-lg lg:text-xl '>{icon}</h2>
                       </Link>

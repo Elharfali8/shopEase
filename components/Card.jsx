@@ -9,7 +9,7 @@ const Card = ({ id, title, price, image, category, rating }) => {
   
     
   return (
-    <Link href={`/products/${id}`} className='card  py-4 transition-all ease-in-out duration-150 hover:scale-105 rounded-lg hover:shadow-xl grid place-items-center'>
+    <Link href={`/products/${id}`} className='card  py-4 transition-all ease-in-out duration-150 hover:scale-105 rounded-lg shadow-md hover:shadow-xl grid place-items-center'>
       <div className='grid place-items-center'>
       <Image src={image} alt={title} className=' object-contain max-h-[200px]' width={200} height={200} />
       </div>

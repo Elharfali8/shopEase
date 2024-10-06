@@ -7,7 +7,7 @@ export default function HomePage() {
       <Hero />
       <Featured />
       <Categories />
-      {/* <Testimonials /> */}
+      <Testimonials />
     </main>
   );
 }
