@@ -136,3 +136,7 @@ body {
 .text {
   color: var(--muted-text-color);
 }
+
+.newsletter-bg {
+  background: #e7f0fc;
+}

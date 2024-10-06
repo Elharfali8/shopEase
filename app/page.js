@@ -1,4 +1,4 @@
-import { Categories, Featured, Hero, Testimonials } from "@/components";
+import { Categories, Featured, Hero, Newsletter, Testimonials } from "@/components";
 
 
 export default function HomePage() {
@@ -8,6 +8,7 @@ export default function HomePage() {
       <Featured />
       <Categories />
       <Testimonials />
+      <Newsletter />
     </main>
   );
 }
