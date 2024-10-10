@@ -140,3 +140,16 @@ body {
 .newsletter-bg {
   background: #e7f0fc;
 }
+
+footer {
+  background: var(--footer-background);
+  color: var(--footer-text-color);
+}
+
+a {
+  transition: all ease-in-out 150ms;
+}
+
+a:hover {
+  color: var(--primary-color);
+}

@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 const Newsletter = () => {
   return (
-    <section className='py-8 lg:py-10 newsletter-bg'>
+    <section className='pt-8 lg:pt-10 pb-12 lg:pb-14 newsletter-bg'>
           <SectionTitle text='Stay Updated' />
           <div className="container main-container grid gap-1 place-items-center ">
               <div className='grid place-items-center'>
