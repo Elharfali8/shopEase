@@ -3,6 +3,12 @@ import Link from 'next/link'
 import React from 'react'
 import { FaBars } from "react-icons/fa6";
 import { FaTimes } from "react-icons/fa";
+import {
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
 
 const Navbar = ({ isOpen, handleNav }) => {
     
@@ -35,7 +41,15 @@ const Navbar = ({ isOpen, handleNav }) => {
                     <FaBars size={27} />
                 </button>
                   )}
-              </div>
+        </div>
+        <div className='flex items-center gap-x-2'>
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </div>
           </div>
     </nav>
   )
