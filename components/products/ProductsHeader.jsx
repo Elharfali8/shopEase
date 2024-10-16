@@ -7,7 +7,7 @@ import { fetchCategories } from '@/features/categories/categoriesSlice'
 import { BsGrid } from "react-icons/bs";
 import { FaList } from "react-icons/fa";
 
-function ProductsHeader() {
+function ProductsHeader({handleLayout, productsLayout}) {
     const { data, isLoading, error } = useSelector((store) => store.categories)
     const dispatch = useDispatch()
     const [valuePrice, setValuePrice] = useState(100)
@@ -57,10 +57,10 @@ function ProductsHeader() {
                   {numProducts} {numProducts > 1 ? 'products' : 'product'}
               </h3>
               <div className='flex items-center gap-x-2'>
-                  <button type='button' className='p-1 rounded bg-[#1A73E8] text-white text-xl shadow-md'>
+                  <button type='button' className={`p-1 rounded ${productsLayout === 'grid' ? 'bg-[#1A73E8] text-white' : 'text-[#1A73E8] bg-white'} text-xl shadow-md`} onClick={() => handleLayout('grid')}>
                       <BsGrid />
                   </button>
-                  <button type='button' className='p-1 rounded text-[#1A73E8] bg-white text-xl shadow-md'>
+                  <button type='button' className={`p-1 rounded ${productsLayout === 'list' ? 'bg-[#1A73E8] text-white' : 'text-[#1A73E8] bg-white'} text-xl shadow-md`} onClick={() => handleLayout('list')}>
                       <FaList />
                   </button>
               </div>

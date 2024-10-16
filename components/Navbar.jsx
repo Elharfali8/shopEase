@@ -14,7 +14,7 @@ const Navbar = ({ isOpen, handleNav }) => {
     
 
   return (
-      <nav className='navbar h-20 fixed top-0 left-0 right-0 shadow grid place-items-center'>
+      <nav className='navbar h-20 fixed top-0 left-0 right-0 shadow grid place-items-center z-[99]'>
           <div className="container main-container flex items-center justify-between">
               <Link href='/' className='text-xl md:text-2xl lg:text-3xl tracking-wide poppins-semibold'>
                 ShopEase
