@@ -69,6 +69,21 @@ body {
   border-radius: 7px;
 }
 
+.error-btn {
+  background: var(--error-color);
+  color: var(--background-color);
+  transition: all ease-in-out 150ms;
+  padding-right: 16px;
+  padding-left: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 7px;
+}
+
+.error-btn:hover {
+  background-color: #ff1201;
+}
+
 .secondary-btn {
   background: var(--success-color);
   color: var(--background-color);
@@ -153,3 +168,4 @@ a {
 a:hover {
   color: var(--primary-color);
 }
+
