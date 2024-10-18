@@ -6,18 +6,28 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchCategories } from '@/features/categories/categoriesSlice'
 import { BsGrid } from "react-icons/bs";
 import { FaList } from "react-icons/fa";
+import { fetchProducts } from '@/features/products/productsSlice'
 
 function ProductsHeader({handleLayout, productsLayout}) {
     const { data, isLoading, error } = useSelector((store) => store.categories)
+    const { data:products } = useSelector((store) => store.products)
     const dispatch = useDispatch()
     const [valuePrice, setValuePrice] = useState(100)
     const [price, setPrice] = useState(0)
     const [maxPrice, setMaxPrice] = useState(1000)
 
-    const numProducts = 20
+    const numProducts = products?.length || 0
+    
+    const productsNum = (num) => {
+        if (num) {
+            return `${num} ${num > 1 ? 'products' : 'product'}`
+        }
+        return `there is no products`
+    }
 
     useEffect(() => {
         dispatch(fetchCategories())
+        dispatch(fetchProducts())
     }, [])
 
     const newCats = [...new Set(['all', ...data])];
@@ -54,7 +64,7 @@ function ProductsHeader({handleLayout, productsLayout}) {
           </div>
           <div className='py-6 lg:py-10 container main-container flex items-center justify-between'>
               <h3 className='lg:text-lg capitalize poppins-medium tracking-wide'>
-                  {numProducts} {numProducts > 1 ? 'products' : 'product'}
+                  {productsNum(numProducts)}
               </h3>
               <div className='flex items-center gap-x-2'>
                   <button type='button' className={`p-1 rounded ${productsLayout === 'grid' ? 'bg-[#1A73E8] text-white' : 'text-[#1A73E8] bg-white'} text-xl shadow-md`} onClick={() => handleLayout('grid')}>

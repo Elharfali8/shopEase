@@ -2,6 +2,7 @@
 
 import { GridLayout, ListLayout } from '@/components'
 import ProductsHeader from '@/components/products/ProductsHeader'
+import Skeleton from '@/components/products/Skeleton'
 import { fetchProducts } from '@/features/products/productsSlice'
 import React, {useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -24,13 +25,19 @@ function ProductsPage() {
   return (
       <main className='my-20 min-h-[calc(100vh-80px)]'>
               <ProductsHeader productsLayout={productsLayout} handleLayout={handleLayout} />
-      <div className="container main-container ">
+      {isLoading ? (
+        <div className="container main-container">
+          <Skeleton />
+        </div>
+      ): (
+        <div className="container main-container ">
         {productsLayout === 'grid' ? (
           <GridLayout data={data} />
         ) : (
             <ListLayout data={data} />
         )}
           </div>
+      )}
     </main>
   )
 }
