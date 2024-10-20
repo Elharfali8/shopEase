@@ -3,13 +3,22 @@ import Link from 'next/link'
 import React from 'react'
 import { FaBars, FaCartShopping } from "react-icons/fa6";
 import { FaTimes } from "react-icons/fa";
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+UserButton,
+  useSignIn,
+  useUser
+} from '@clerk/nextjs'
 
 
-import { AuthDropDown } from '.';
 import { useSelector } from 'react-redux';
 
 const Navbar = ({ isOpen, handleNav }) => {
-  const {isLoading, amount} = useSelector((store) => store.cart)  
+  const { isLoading, amount } = useSelector((store) => store.cart)
+  const { user } = useUser()
 
   return (
       <nav className='navbar h-20 fixed top-0 left-0 right-0 shadow grid place-items-center z-[99]'>
@@ -47,7 +56,20 @@ const Navbar = ({ isOpen, handleNav }) => {
               {isLoading ? '-' : amount}
             </span>
           </button>
-          <AuthDropDown />
+          <div>
+          <SignedOut >
+              <div className='flex items-center gap-x-2'>
+              <SignInButton className='text-white primary-btn' />
+              <SignUpButton className='signUp-btn' />
+              </div>
+            </SignedOut>
+            <SignedIn>
+              <div className='flex items-center gap-x-2 p-1 newsletter-bg rounded-lg'>
+              <UserButton />
+              <h3 className='text-lg capitalize poppins-medium'>{user?.fullName}</h3>
+              </div>
+          </SignedIn> 
+          </div>
         </div>
           </div>
     </nav>

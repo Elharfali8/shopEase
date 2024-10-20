@@ -6,7 +6,7 @@
 
 :root {
   --primary-color: #1A73E8; /* Bright blue for buttons and links */
-  --secondary-color: #FF9800; /* Orange for accent elements */
+  --secondary-color: #060605; /* Orange for accent elements */
   --background-color: #F4F7F9; /* Light grey for the background */
   --text-color: #333333; /* Dark grey for primary text */
   --muted-text-color: #757575; /* Light grey for secondary text */
@@ -69,6 +69,18 @@ body {
   border-radius: 7px;
 }
 
+.signUp-btn {
+  color: var(--primary-color);
+  background: var(--background-color);
+  transition: all ease-in-out 150ms;
+  padding-right: 16px;
+  padding-left: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 7px;
+  border: 1px solid;
+}
+
 .error-btn {
   background: var(--error-color);
   color: var(--background-color);
@@ -99,6 +111,11 @@ body {
   background: var(--button-hover-color);
   color: var(--background-color);
 }
+
+.signUp-btn:hover {
+  background: var(--border-color)
+}
+
 .secondary-btn:hover {
   background: #378139;
 }
