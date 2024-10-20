@@ -10,7 +10,7 @@ function CartPage() {
     
 
   return (
-      <main className={`mt-20 min-h-[calc(300vh-80px)] ${cart?.length < 1 && 'h-full w-full grid place-items-center'}`}>
+      <main className={`mt-20 min-h-[calc(100vh-80px)] ${cart?.length < 1 && 'h-full w-full grid place-items-center'}`}>
           <div className={`container main-container py-14 lg:py-20 `}>
               {cart?.length > 0 ? (
                   <div className=''>
@@ -20,7 +20,10 @@ function CartPage() {
                       <div className='grid gap-4 grid-cols-1 lg:grid-cols-5'>
                           <div className='lg:col-span-3 p-2 grid gap-6 lg:gap-8'>
                               {cart?.map((item) => {
-                                  return <CardCart key={item.id} {...item} />
+                                  return <>
+                                      <CardCart key={item.id} {...item} />
+                                      <div className='h-[1px] w-full bg-gray-400' />
+                                  </>
                               })}
                           </div>
                           <div className='lg:col-span-2 p-2 '>

@@ -2,6 +2,8 @@ import { Footer, Header } from "@/components";
 import "./globals.css";
 import { Providers } from "./providers";
 import { ClerkProvider } from "@clerk/nextjs";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export const metadata = {
@@ -21,9 +23,22 @@ export default function RootLayout({ children }) {
         <Header />
           {children}
           <Footer />
-        </Providers>
+          </Providers>
+          <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        />
       </body>
-    </html>
+      </html>
+      
         </ClerkProvider>
   );
 }
