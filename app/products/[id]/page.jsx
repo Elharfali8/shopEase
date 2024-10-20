@@ -1,10 +1,11 @@
 'use client'
 
 import { BreadCrumbs } from '@/components'
+import { addToCart } from '@/features/cart/cartSlice'
 import { fetchSingleProduct } from '@/features/singleProduct/singleProductSlice'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 function SingleProductPage({params}) {
@@ -12,6 +13,7 @@ function SingleProductPage({params}) {
     const dispatch = useDispatch()
     const router = useRouter()
     const id = params.id
+    const [selectedAmount, setSelectedAmount] = useState(1)
 
     useEffect(() => {
         dispatch(fetchSingleProduct({id}))
@@ -19,6 +21,10 @@ function SingleProductPage({params}) {
     
     const { image, title, price, category, description } = data
     const arr = Array.from({ length: 20 }, (_, index) => index + 1);
+
+    const handleAddToCart = () => {
+        dispatch(addToCart({ id, title, price, image, category, quantity: selectedAmount }));
+      };
 
 
   return (
@@ -56,14 +62,17 @@ function SingleProductPage({params}) {
                                   <div className=''>
                                       <div className="grid gap-y-1">
                                           <label>Amount</label>
-                                          <select select className="select select-bordered w-full sm:max-w-xs">
+                                          <select
+                                            value={selectedAmount}
+                                            onChange={(e) => setSelectedAmount(parseInt(e.target.value))}
+                                              className="select select-bordered w-full sm:max-w-xs">
                                               {arr.map((num, index) => {
                                                   return <option value={num} key={index}>{num}</option>
                                             })}
                                       </select>
                                       </div>
                                         
-                                      <button type='button' className='primary-btn flex items-center justify-center w-full sm:max-w-xs mt-3 lg:mt-4'>ADD TO CART</button>
+                                      <button type='button' onClick={handleAddToCart} className='primary-btn flex items-center justify-center w-full sm:max-w-xs mt-3 lg:mt-4'>ADD TO CART</button>
                                   </div>
                               </div>
                       )}

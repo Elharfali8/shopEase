@@ -1,17 +1,15 @@
 import { navLinks } from '@/utils/data'
 import Link from 'next/link'
 import React from 'react'
-import { FaBars } from "react-icons/fa6";
+import { FaBars, FaCartShopping } from "react-icons/fa6";
 import { FaTimes } from "react-icons/fa";
-import {
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton
-} from '@clerk/nextjs'
+
+
+import { AuthDropDown } from '.';
+import { useSelector } from 'react-redux';
 
 const Navbar = ({ isOpen, handleNav }) => {
-    
+  const {isLoading, amount} = useSelector((store) => store.cart)  
 
   return (
       <nav className='navbar h-20 fixed top-0 left-0 right-0 shadow grid place-items-center z-[99]'>
@@ -42,13 +40,14 @@ const Navbar = ({ isOpen, handleNav }) => {
                 </button>
                   )}
         </div>
-        <div className='flex items-center gap-x-2'>
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
+        <div className='hidden lg:flex items-center justify-between gap-x-4'>
+          <button type='button' className='text-2xl text-[#1A73E8] transition-all ease-in-out duration-150 hover:text-[#1665C0] relative'>
+            <FaCartShopping />
+            <span className='text-sm lg:text-md absolute top-[-12px] bg-[#F44336] text-white h-5 w-5 rounded-full poppins-medium inline-block'>
+              {isLoading ? '-' : amount}
+            </span>
+          </button>
+          <AuthDropDown />
         </div>
           </div>
     </nav>

@@ -97,6 +97,7 @@ body {
 
 .primary-btn:hover {
   background: var(--button-hover-color);
+  color: var(--background-color);
 }
 .secondary-btn:hover {
   background: #378139;
