@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux'
 
 function CartPage() {
     const { cart, isLoading, error } = useSelector((store) => store.cart)
-    const dispatch = useDispatch()
     
 
   return (

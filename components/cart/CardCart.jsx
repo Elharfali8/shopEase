@@ -1,6 +1,6 @@
 'use client'
 
-import { removeItemFromCart } from "@/features/cart/cartSlice";
+import { removeItemFromCart, updateQuantity } from "@/features/cart/cartSlice";
 import Image from "next/image"
 import { useState } from "react"
 import { FaTrash } from "react-icons/fa6";
@@ -15,7 +15,14 @@ function CardCart({id, image, title, category, price, quantity}) {
 
     const handleRemoveItem = () => {
         dispatch(removeItemFromCart({ id, title, price, image, category, quantity: quant }));
-      };
+    };
+    
+    const handleQuantityChange = (e) => {
+        const newQuantity = parseInt(e.target.value);
+        setQuant(newQuantity);
+        dispatch(updateQuantity({ id, newQuantity }));
+        toast.success('Product quantity updated');
+    };
 
   return (
       <div className="">
@@ -32,10 +39,7 @@ function CardCart({id, image, title, category, price, quantity}) {
             <label>Amount</label>
             <select
                 value={quant}
-                      onChange={(e) => {
-                          setQuant(parseInt(e.target.value))
-                          toast.success('Product quantity upgraded')
-                }}
+                      onChange={handleQuantityChange}
                     className="select select-bordered w-full sm:max-w-xs">
                     {arr.map((num, index) => {
                         return <option value={num} key={index}>{num}</option>
