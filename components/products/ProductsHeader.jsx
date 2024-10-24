@@ -12,11 +12,15 @@ function ProductsHeader({handleLayout, productsLayout}) {
     const { data, isLoading, error } = useSelector((store) => store.categories)
     const { data:products } = useSelector((store) => store.products)
     const dispatch = useDispatch()
-    const [valuePrice, setValuePrice] = useState(100)
-    const [price, setPrice] = useState(0)
-    const [maxPrice, setMaxPrice] = useState(1000)
+
+
+    const [minPrice, setMinPrice] = useState(0)
+    const [maxPrice, setMaxPrice] = useState(0)
+    const [valuePrice, setValuePrice] = useState('-')
 
     const numProducts = products?.length || 0
+
+    
     
     const productsNum = (num) => {
         if (num) {
@@ -29,6 +33,15 @@ function ProductsHeader({handleLayout, productsLayout}) {
         dispatch(fetchCategories())
         dispatch(fetchProducts())
     }, [])
+
+    useEffect(() => {
+        if (products?.length > 0) {
+          const prices = products.map((product) => product?.price);
+    
+          setMinPrice(Math.min(...prices) || 0);
+          setMaxPrice(Math.max(...prices) || 0);
+        }
+      }, [products]);
 
     const newCats = [...new Set(['all', ...data])];
     const sort = ['a-z', 'z-a', 'high', 'low']
@@ -48,7 +61,7 @@ function ProductsHeader({handleLayout, productsLayout}) {
               {/* ------------ */}
               <SelectInput data={sort} label='Sort By' name='sort' />
               {/* ------------ */}
-              <InputRange name='price' price={price} value={valuePrice} label='Selected Price' maxPrice={maxPrice} handlePriceChange={handlePriceChange} />
+              <InputRange name='price' price={minPrice} value={valuePrice} label='Selected Price' maxPrice={maxPrice} handlePriceChange={handlePriceChange} />
               {/* ------------ */}
               <div className='grid place-items-center'>
                   <button type='button' className='w-full h-[38px] text-lg lg:text-xl poppins-medium tracking-wide  primary-btn flex items-center justify-center'>
